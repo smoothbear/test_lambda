@@ -14,12 +14,7 @@ public class HandlerStream implements RequestHandler<Map<String, String>, String
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
         LambdaLogger logger = context.getLogger();
-        String response = "200 OK";
 
-        logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
-        logger.log("CONTEXT: " + gson.toJson(context));
-        logger.log("EVENT: " + gson.toJson(event));
-        logger.log("EVENT TYPE: " + event.getClass().toString());
-        return response;
+        return String.format("Hello, %s!!", event.get("name"));
     }
 }
